@@ -1,0 +1,7 @@
+{
+    "name": "Urban_Location",
+    "version": "1.0.0",
+    "description": "Address to location mapper",
+    "title": "Urban Location",
+    "url" : "http://localhost:3033/"
+  }
