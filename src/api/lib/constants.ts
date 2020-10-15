@@ -1,4 +1,4 @@
-export const { API_KEY } = process.env
+export const { API_KEY, NODE_ENV, PORT } = process.env
 
 export const constants = {
   MAP_URL: 'https://maps.googleapis.com/maps/api/geocode/json?',

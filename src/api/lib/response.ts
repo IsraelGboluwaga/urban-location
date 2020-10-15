@@ -2,7 +2,7 @@ import express from 'express'
 
 interface ILocation {
   address1: string
-  address2: string
+  address2: string | null
   city: string
   lat: number
   lng: number
