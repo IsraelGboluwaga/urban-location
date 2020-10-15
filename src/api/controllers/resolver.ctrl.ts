@@ -24,6 +24,45 @@ const getAddressComponentByType = (addressComponents: any[], type: string): IAdd
   return flow(map(fn), compact)(addressComponents)[0]
 }
 
+/**
+ * @api {get} /resolve/:address Get address district and location info
+ * @apiName Get address district and location info
+ * @apiGroup District Resolvers
+ * @apiParam {string} address Adresss to locate district from
+ *
+ * @apiSuccess {String} status
+ * @apiSuccess {String} search
+ * @apiSuccess {Object} location
+ * @apiSuccess {String} location.address1
+ * @apiSuccess {String} location.address2
+ * @apiSuccess {String} location.city
+ * @apiSuccess {Number} location.lat
+ * @apiSuccess {Number} location.lng
+ * @apiSuccess {String} location.serviceArea
+ * @apiSuccess {String} location.postcode
+ *
+ * @apiSuccessExample {json} Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *      "status": "OK",
+ *      "search": "White Bear Yard"
+ *      "location": {
+ *        "address1": “2nd Floor, White Bear Yard”,
+ *        "address2": “144a Clerkenwell Road”,
+ *        "city": "London",
+ *        "lat": 0.00000,
+ *        "lng": 0.00000,
+ *        “serviceArea”: “LONCENTRAL”,
+ *        “postcode”: “EC1R5DF”
+ *      },
+ *    }
+ *
+ * @apiErrorExample {json} Error-Response
+ *    {
+ *      "status": "NOT_FOUND",
+ *      "search": "White Bear Yard"
+ *    }
+ */
 const resolveDistrict = async (req: Request, res: Response) => {
   const { address } = req.params
   const { error, ...rest } = await makeGetRequest(MAP_URL, { address, key: API_KEY })
